@@ -1,15 +1,11 @@
----
-tags:
-  - ctf
-  - writeup
-platform: DockerLabs
-machine: BreakMySSH
-difficulty: Very Easy
-os: Linux
-status: Completada
----
-
 # DockerLabs — BreakMySSH
+
+![Plataforma](https://img.shields.io/badge/Plataforma-DockerLabs-21262d?style=flat)
+![Dificultad](https://img.shields.io/badge/Dificultad-Very%20Easy-238636?style=flat)
+![SO](https://img.shields.io/badge/SO-Linux-21262d?style=flat&logo=linux&logoColor=FCC624)
+![Estado](https://img.shields.io/badge/Estado-Completada-238636?style=flat)
+
+---
 
 ## Resumen
 

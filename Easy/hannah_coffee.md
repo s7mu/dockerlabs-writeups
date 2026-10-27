@@ -1,15 +1,12 @@
----
-tags:
-  - ctf
-  - writeup
-platform: DockerLabs
-machine: hannah_coffee
-difficulty: Easy
-os: Linux
-status: Completada
+# DockerLabs — hannah_coffee
+
+![Plataforma](https://img.shields.io/badge/Plataforma-DockerLabs-21262d?style=flat)
+![Dificultad](https://img.shields.io/badge/Dificultad-Easy-e3b341?style=flat)
+![SO](https://img.shields.io/badge/SO-Linux-21262d?style=flat&logo=linux&logoColor=FCC624)
+![Estado](https://img.shields.io/badge/Estado-Completada-238636?style=flat)
+
 ---
 
-# DockerLabs — hannah_coffee
 ## Resumen
 
 Hannah's Coffee es una máquina Linux de nivel fácil que simula una aplicación web de cafetería con vulnerabilidades encadenadas. El vector de entrada comienza explotando una vulnerabilidad de Inclusión Local de Archivos (LFI) en la aplicación PHP, la cual se combina con una técnica de FTP Log Poisoning para lograr Ejecución Remota de Códigos (RCE) como www-data. Para la escalada de privilegios, se requiere el uso de comandos permitidos mediante sudo y el abuso de binarios con capabilities específicas para alcanzar el acceso total como root.
