@@ -1,16 +1,16 @@
-# 🏴 DockerLabs Writeups
+# DockerLabs Writeups
 
 > Colección personal de writeups y metodologías detalladas paso a paso para la resolución de laboratorios vulnerables de la plataforma **[DockerLabs](https://dockerlabs.es/)**.
 
 [![Platform](https://img.shields.io/badge/Platform-DockerLabs-blue.svg)](https://dockerlabs.es/)
-[![Machines](https://img.shields.io/badge/Completed-14%20Machines-brightgreen.svg)](#-índice-de-máquinas)
-[![Difficulty](https://img.shields.io/badge/Difficulty-Very%20Easy%20%7C%20Easy-orange.svg)](#-índice-de-máquinas)
+[![Machines](https://img.shields.io/badge/Completed-14%20Machines-brightgreen.svg)](#índice-de-máquinas)
+[![Difficulty](https://img.shields.io/badge/Difficulty-Very%20Easy%20%7C%20Easy-orange.svg)](#índice-de-máquinas)
 [![Author](https://img.shields.io/badge/Author-s7mu-blueviolet.svg)](https://github.com/s7mu)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
 ---
 
-## 📋 Descripción
+## Descripción
 
 Este repositorio documenta el proceso de auditoría y explotación (*walkthroughs*) de diferentes entornos de **DockerLabs**, abarcando desde la fase de reconocimiento inicial hasta la obtención de privilegios de administrador (`root`).
 
@@ -22,7 +22,7 @@ Cada writeup sigue una metodología estructurada:
 
 ---
 
-## 📊 Estadísticas
+## Estadísticas
 
 | Dificultad | Máquinas resueltas | Sistema Operativo |
 | :--- | :---: | :---: |
@@ -32,7 +32,7 @@ Cada writeup sigue una metodología estructurada:
 
 ---
 
-## 📑 Índice de Máquinas
+## Índice de Máquinas
 
 ### 🟢 Very Easy
 
@@ -62,7 +62,7 @@ Cada writeup sigue una metodología estructurada:
 
 ---
 
-## 🛠️ Herramientas Principales
+## Herramientas Principales
 
 - **Reconocimiento & Escaneo:** `nmap`, `netcat`, `whatweb`
 - **Fuzzing & Enumeración Web:** `gobuster`, `ffuf`, `wfuzz`, `wpscan`
@@ -71,13 +71,13 @@ Cada writeup sigue una metodología estructurada:
 
 ---
 
-## ⚖️ Disclaimer
+## Disclaimer
 
 La información y writeups contenidos en este repositorio tienen fines estrictamente **educativos y de aprendizaje** en entornos de laboratorio controlados. El autor no se hace responsable del uso indebido de las técnicas y herramientas descritas.
 
 ---
 
-## 📜 Licencia
+## Licencia
 
 Distribuido bajo la Licencia MIT. Consulta [LICENSE](LICENSE) para más información.
 

@@ -53,11 +53,25 @@ def main():
             content = content[:-3].rstrip()
         content += '\n'
 
-        # Limpiar placeholder en encabezado si existiera
-        content = content.replace('# 🏴 DockerLabs — <Nombre Máquina>', f'# 🏴 DockerLabs — {base_name.replace(".md", "")}')
+        # Limpiar emoji y placeholder en encabezado si existiera
+        content = content.replace('# 🏴 DockerLabs', '# DockerLabs')
+        content = content.replace('# 🏴 Dockerlabs', '# DockerLabs')
+        content = content.replace('# DockerLabs — <Nombre Máquina>', f'# DockerLabs — {base_name.replace(".md", "")}')
 
         # Reemplazar wikilinks [[Tool]] -> **Tool**
         content = re.sub(r'(?<!\!)\[\[(.*?)\]\]', lambda m: f'**{m.group(1).split("|")[-1]}**', content)
+
+        # Formatear callouts/alerts de GitHub Flavored Markdown (GFM)
+        content = re.sub(
+            r'>\s*\[!NOTE\]\s+([A-Za-z0-9_¿¡].*?)\n>\s*',
+            r'> [!NOTE]\n> **\1:** ',
+            content
+        )
+        content = re.sub(
+            r'>\s*\[!NOTE\]\s*¿Por qué\?\s*\n([^>\n][^\n]*)',
+            r'> [!NOTE]\n> **¿Por qué?** \1',
+            content
+        )
 
         # Reemplazar imágenes ![[img.png|size]] -> standard markdown / img
         def replace_img(m):
@@ -79,9 +93,29 @@ def main():
 
         content = re.sub(r'!\[\[(.*?)\]\]', replace_img, content)
 
+        # Separar múltiples imágenes en una misma línea
+        content = re.sub(r'(<img[^>]+>)\s*(<img[^>]+>)', r'\1\n\n\2', content)
+
+        # Asegurar salto de línea antes y después de cada imagen
+        lines = content.split('\n')
+        new_lines = []
+        for i, line in enumerate(lines):
+            is_img = ('<img ' in line) or (re.search(r'^!\[.*?\]\(.*?\)$', line.strip()) is not None)
+            if is_img:
+                if new_lines and new_lines[-1].strip() != '':
+                    new_lines.append('')
+                new_lines.append(line.strip())
+                if i + 1 < len(lines) and lines[i+1].strip() != '':
+                    new_lines.append('')
+            else:
+                new_lines.append(line)
+
+        cleaned = '\n'.join(new_lines)
+        cleaned = re.sub(r'\n{3,}', '\n\n', cleaned).strip() + '\n'
+
         target_file = os.path.join(REPO_DIR, target_folder, base_name)
         with open(target_file, 'w', encoding='utf-8') as fp:
-            fp.write(content)
+            fp.write(cleaned)
 
         processed_count += 1
 

@@ -9,7 +9,7 @@ os: Linux
 status: Completada
 ---
 
-# 🏴 DockerLabs — Duque
+# DockerLabs — Duque
 
 ## Resumen
 
@@ -28,8 +28,6 @@ Vemos que tiene un servidor web y ssh corriendo, lo que nos da una idea de que t
 
 ![Pasted image 20260824163629](../images/Pasted%20image%2020260824163629.png)
 
-
-
 ---
 
 ## Enumeración
@@ -43,12 +41,17 @@ gobuster dir -u http://172.17.0.2/ -w /usr/share/seclists/Discovery/Web-Content/
 ```
 
 Y nos encuentra /bills/
+
 ![Pasted image 20260824163949](../images/Pasted%20image%2020260824163949.png)
 
 Y nos encontramos un panel de login, pruebo a ver si es vulnerable con SQLi poniendo una comilla simple ' y nos da Error 500:
-<img src="../images/Pasted%20image%2020260824164056.png" width="383" alt="Pasted image 20260824164056" /><img src="../images/Pasted%20image%2020260824164109.png" width="313" alt="Pasted image 20260824164109" />
+
+<img src="../images/Pasted%20image%2020260824164056.png" width="383" alt="Pasted image 20260824164056" />
+
+<img src="../images/Pasted%20image%2020260824164109.png" width="313" alt="Pasted image 20260824164109" />
 
 Así que empiezo a probar payloads, primero hago `admin'-- -` para entrar directamente como Admin y conseguimos acceso:
+
 <img src="../images/Pasted%20image%2020260824164400.png" width="364" alt="Pasted image 20260824164400" />
 
 Además si pruebo `' OR '1'='1'-- -` en vez de `admin'-- -`  nos encontramos con otro usuario llamado Mario pero que no tiene acceso a este panel de administración.
@@ -103,7 +106,6 @@ Estos son 2 comandos en uno, primero generamos una wordlist usando crunch, espec
 Nos encuentra esta factura, la buscamos y encontramos credenciales del usuario duque.
 
 ![Pasted image 20260824170133](../images/Pasted%20image%2020260824170133.png)
-
 
 ---
 

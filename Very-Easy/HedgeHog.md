@@ -9,7 +9,7 @@ os: Linux
 status: Completada
 ---
 
-# 🏴 DockerLabs — HedgeHog
+# DockerLabs — HedgeHog
 
 ## Resumen
 
@@ -27,6 +27,7 @@ nmap -sCV -p22,80 172.17.0.2
 Nos encontramos 2 servicios corriendo, un servidor web y SSH.
 
 En la página nos encontramos todo en blanco y un nombre, tails, que en el contexto de la máquina pienso que es el usuario para hacer luego un ataque de fuerza bruta al ssh.
+
 ![Pasted image 20260814154016](../images/Pasted%20image%2020260814154016.png)
 
 ---
@@ -46,20 +47,20 @@ tac /usr/share/wordlists/rockyou.txt | tr -d ' ' > rockyourev.txt
 ```
 
 donde el parámetro -f detendrá el proceso al encontrar el primer match:
+
 ![Pasted image 20260814155303](../images/Pasted%20image%2020260814155303.png)
 
 Y nos encontramos una contraseña para entrar por SSH.
 
-
-> [!NOTE] Aclaración
-> Antes de esto, estuve varios minutos intentando con el rockyou normal, pero al ver que no conseguía nada, pensé en invertirlo. Además, antes investigué toda la página web intentando encontrar otros directorios o archivos.
-
+> [!NOTE]
+> **Aclaración:** Antes de esto, estuve varios minutos intentando con el rockyou normal, pero al ver que no conseguía nada, pensé en invertirlo. Además, antes investigué toda la página web intentando encontrar otros directorios o archivos.
 
 ---
 
 ## Acceso inicial (Foothold)
 
 Con las credenciales que tenía antes logré entrar.
+
 ![Pasted image 20260814155701](../images/Pasted%20image%2020260814155701.png)
 
 Vi que en /home había otro usuario, sonic. 

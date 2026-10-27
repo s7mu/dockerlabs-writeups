@@ -9,7 +9,7 @@ os: Linnux
 status: Completada
 ---
 
-# 🏴 DockerLabs — BorazuwarahCTF
+# DockerLabs — BorazuwarahCTF
 
 ## Resumen
 

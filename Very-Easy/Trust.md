@@ -9,7 +9,7 @@ os: Linux
 status: Completada
 ---
 
-# 🏴 DockerLabs — Trust
+# DockerLabs — Trust
 
 ## Resumen
 
@@ -72,9 +72,11 @@ hydra -l mario -P /usr/share/wordlists/rockyou.txt ssh://172.17.0.2 -t 64
 ```
 
 Y nos encontramos una contraseña, **chocolate**
+
 ![Pasted image 20260814025648](../images/Pasted%20image%2020260814025648.png)
 
 Con esto iniciamos sesión en la máquina víctima con las credenciales encontradas.
+
 ![Pasted image 20260814025743](../images/Pasted%20image%2020260814025743.png)
 
 ---

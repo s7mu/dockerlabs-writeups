@@ -9,12 +9,11 @@ os: Linux
 status: Completada
 ---
 
-# 🏴 DockerLabs — WalkingCMS
+# DockerLabs — WalkingCMS
 
 ## Resumen
 
 Intrusión por fuerza bruta en el panel interno de wordpress y acceso al servidor desde dicho panel.
-
 
 ---
 
@@ -54,6 +53,7 @@ wpscan --url http://172.17.0.2/wordpress/ \
 ```
 
 Y me encontró la contraseña, `love`:
+
 ![Pasted image 20260817012204](../images/Pasted%20image%2020260817012204.png)
 
 Con esto ya podriamos iniciar en el panel de inicio de sesión con Wordpress
@@ -83,9 +83,11 @@ find / -perm -u=s -type f 2>/dev/null
 ```
 
 Me dió unos cuantos, pero me centré en `/usr/bin/env`:
+
 <img src="../images/Pasted%20image%2020260817013405.png" width="316" alt="Pasted image 20260817013405" />
 
 Fui a gtfobins y busqué env, ví que había un apartado para SUID, copié, pegué y conseguí root:
+
 <img src="../images/Pasted%20image%2020260817013510.png" width="591" alt="Pasted image 20260817013510" />
 
 ![Pasted image 20260817013540](../images/Pasted%20image%2020260817013540.png)

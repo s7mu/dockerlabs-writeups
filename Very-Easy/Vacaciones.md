@@ -9,7 +9,7 @@ os: Linux
 status: Completada
 ---
 
-# 🏴 Dockerlabs — Vacaciones
+# DockerLabs — Vacaciones
 
 ## Resumen
 
@@ -59,6 +59,7 @@ Iniciamos sesión con la contraseña de camilo y era válida, conseguimos el pri
 ![Pasted image 20260814010322](../images/Pasted%20image%2020260814010322.png)
 
 Hasta que me acuerdo del mensaje del index.html, hablaba algo de un correo así que fui al directorio `/var/mail/camilo`  y encontré un `correo.txt` que me daba una contraseña, según el contexto del mail era la de juan.
+
 ![Pasted image 20260814010739](../images/Pasted%20image%2020260814010739.png)
 
 Inicié sesión con este usuario.

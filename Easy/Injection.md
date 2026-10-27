@@ -9,7 +9,7 @@ os: Linux
 status: Completada
 ---
 
-# 🏴 DockerLabs — Injection
+# DockerLabs — Injection
 
 ## Resumen
 
@@ -33,22 +33,28 @@ En este primer escaneo, vemos un servidor web y SSH, decidí echar un vistazo a 
 ## Enumeración
 
 Al principio, me daba problemas de SQLi ya que la base de datos de MariaDB no estaba levantada, igual que otras cosas pero las he omitido en el writeup. Así que hice un escaneo de directorios y archivos ocultos pero encontré poca cosa:
+
 ![Pasted image 20260819182409](../images/Pasted%20image%2020260819182409.png)
 
 El index.php que era el login, el archivo de config y el . que es el formulario de login.
 Probé a ver si era vulnerable a una SQLi, en el campo de user puse `test´` con una comilla simple al final y en la contraseña test, era vulnerable a primera vista:
+
 ![Pasted image 20260819182819](../images/Pasted%20image%2020260819182819.png)
+
 Luego, decidí abrir Burpsuite y ver que estaba pasando por detrás con la solicitud. Estuvie probando si era totalmente vulnerable y mandé este payload:
+
 ![Pasted image 20260819182859](../images/Pasted%20image%2020260819182859.png)
+
 Que es `admin' OR '1'='1'-- -` pro codeado con URL, y vemos que sale un 302 Found y se nos redirige a `/acceso_valido_dylan.php`, decidí ver que era este recurso y nos dió la contraseña del usuario:
+
 ![Pasted image 20260819183103](../images/Pasted%20image%2020260819183103.png)
 
 ---
 
 ## Acceso inicial (Foothold)
 
-
 Decidí reutilizar esta contraseña como clave del usuario dylan en ssh, y funcionó:
+
 ![Pasted image 20260819183152](../images/Pasted%20image%2020260819183152.png)
 
 Nos faltaba ser el usuario root.
@@ -66,4 +72,5 @@ find / -perm -u=s -type f 2>/dev/null
 Me dió unos cuantos, pero me centré en `/usr/bin/env`:
 
 Fui a gtfobins y busqué env, ví que había un apartado para SUID, copié, pegué y conseguí root:
+
 <img src="../images/Pasted%20image%2020260817013510.png" width="591" alt="Pasted image 20260817013510" />

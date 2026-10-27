@@ -9,7 +9,7 @@ os: Linux
 status: Completada
 ---
 
-# 🏴 DockerLabs — Tproot
+# DockerLabs — Tproot
 
 ## Resumen
 
@@ -27,7 +27,6 @@ Nos ha dado el puerto 21 y 80
 
 <img src="../images/Pasted%20image%2020260813153525.png" width="498" alt="Pasted image 20260813153525" />
 
-
 ```bash
 nmap -sCV -p21,80 172.17.0.2
 ```
@@ -41,12 +40,14 @@ Este comando nos da algo bastante interesante, y es que FTP utiliza por detrás 
 ## Enumeración
 
 Con una rápida busqueda en Internet, encontramos la vulnerabilidad, esta se trata de que al conectarse a través de FTP con un usuario que termine en `:)` el servicio abre una shell con privilegios de root en el puerto TCP 6200
+
 <img src="../images/Pasted%20image%2020260813154155.png" width="433" alt="Pasted image 20260813154155" />
 
 ## Acceso inicial (Foothold)
 
 ---
 Nos conectamos por FTP a nuestra víctima e introducimos el usuario `kali:)` y cualquier contraseña.
+
 ![Pasted image 20260813154332](../images/Pasted%20image%2020260813154332.png)
 
 Veremos que el servicio se queda congelado, esto significa que la shell está esperándonos.

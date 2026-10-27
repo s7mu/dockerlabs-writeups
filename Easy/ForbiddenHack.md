@@ -9,7 +9,7 @@ os: Linux
 status: Completada
 ---
 
-# 🏴 DockerLabs — ForbiddenHack
+# DockerLabs — ForbiddenHack
 
 ## Resumen
 
@@ -49,6 +49,7 @@ Para hacer el bypass simplemente añadí una cabecera, `Referer: http://bypass40
 Y nos encontramos con esto:
 
 ![Pasted image 20260818232411](../images/Pasted%20image%2020260818232411.png)
+
 Con esto hemos bypasseado el acceso, podiendo ver la página. Pero aún así, tampoco podía hacer mucho con esto, así que decidí buscar parámetros vulnerables para una LFI ya que teníamos la cabecera necesaria para saltarnos el 403.
 
 ```bash
@@ -97,7 +98,6 @@ Con esto puesto al final de la cadena gigante de PHP, nos lanza una reverse shel
 
 <img src="../images/Pasted%20image%2020260818234748.png" width="451" alt="Pasted image 20260818234748" />
 
-
 ---
 
 ## Escalada de Privilegios
@@ -110,11 +110,13 @@ Probé `sudo -l`, escalada por SUID, capabilities, pero no encontraba nada, así
 <img src="../images/Pasted%20image%2020260818231000.png" width="297" alt="Pasted image 20260818231000" />
 
 Ya con el usuario de bambi, hice sudo -l y vi algo raro:
+
 <img src="../images/Pasted%20image%2020260818235836.png" width="536" alt="Pasted image 20260818235836" />
 
 Podía usar sudo en ese binario que no lo había visto antes, decidí ver de que se trataba y vi que tenía un par de módulos instalados pero poco más, la ayuda no daba mucha información. Así que decidí usar el comando `strings` para ver las cadenas de texto del binario, y encontré bastante información, con ella saqué que había una opción de poder leer un archivo con el parámetro `-r`. 
 
 Intenté leer un archivo que normalmente no se puede leer que es el `/etc/shadow` y funcionaba
+
 <img src="../images/Pasted%20image%2020260819000133.png" width="497" alt="Pasted image 20260819000133" />
 
 Pero seguía sin tener mucho de donde tirar, así que decidí buscar si había algún archivo con el nombre del binario en el sistema con 

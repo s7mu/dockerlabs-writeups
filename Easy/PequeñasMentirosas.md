@@ -9,7 +9,7 @@ os: Linux
 status: Completada
 ---
 
-# 🏴 DockerLabs — PequeñasMentirosas
+# DockerLabs — PequeñasMentirosas
 
 ## Resumen
 
@@ -67,12 +67,12 @@ john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hash_spencer.t
 En el que especificamos el formato usando `--format=raw-md5`, ya que es lo que mas pinta tenía según su estructura.
 
 Nos encontró la contraseña rapidamente. `password1`:
+
 ![Pasted image 20260826000813](../images/Pasted%20image%2020260826000813.png)
 
 ---
 
 ## Escalada de Privilegios
-
 
 Con lo anterior, inicié sesión por SSH con el usuario `spencer`, haciendo `sudo -l` viendo que podemos ejecutar python3 como root. Así que con este comando logré invocarme una shell como root. 
 

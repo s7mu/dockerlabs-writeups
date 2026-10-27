@@ -9,7 +9,7 @@ os: Linux
 status: Completada
 ---
 
-# 🏴 DockerLabs — Psycho
+# DockerLabs — Psycho
 
 ## Resumen
 
@@ -25,6 +25,7 @@ nmap -sCV -p22,80 172.17.0.2
 ```
 
 Vemos que tiene una página web y SSH corriendo, no encontramos mucha mas información por ahora así que el siguiente paso es ver la página web.
+
 <img src="../images/Pasted%20image%2020260825172049.png" width="586" alt="Pasted image 20260825172049" />
 
 ---
@@ -39,6 +40,7 @@ gobuster dir -u http://172.17.0.2 -w /usr/share/dirb/wordlists/common.txt
 ```
 
 Y nos encuentra el directorio `/assets`, dentro tiene una archivo llamado `background.jpg`. Decido usar la herramienta `exiftool` para ver si tiene algo oculto, pero vemos que no, así que continuamos con la enumeración.
+
 <img src="../images/Pasted%20image%2020260825172342.png" width="391" alt="Pasted image 20260825172342" />
 
 Me puse a buscar párametros interesantes con `ffuf` con este comando, ya que `index.php` parecía procesar algún parámetro pero no sabíamos cual era:
@@ -50,6 +52,7 @@ ffuf -u 'http://172.17.0.2/index.php?FUZZ=test' \
 ```
 
 Y nos encuentra el parámetro `secret`:
+
 ![Pasted image 20260825172944](../images/Pasted%20image%2020260825172944.png)
 
 Así que decido usar ese parámetro para ver si puedo leer el archivo `/etc/passwd` usando path traversal, usando `http://172.17.0.2/index.php?secret=../../../../../../../../etc/passwd` y vemos que nos sale el archivo con éxito.
@@ -63,7 +66,6 @@ Una vez que tengo estos 2 usuarios, vemos si puedo robar su clave privada de SSH
 Y viendo el contenido:
 
 ![Pasted image 20260825173617](../images/Pasted%20image%2020260825173617.png)
-
 
 ---
 
