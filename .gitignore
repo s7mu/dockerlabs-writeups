@@ -1,0 +1,13 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor & Vault configs
+.obsidian/
+*.swp
+*.tmp
+
+# Network & Credential configs
+*.ovpn
+*.key
+*.pem
